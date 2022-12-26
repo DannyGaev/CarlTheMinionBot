@@ -24,7 +24,7 @@ import asyncio
 intents = discord.Intents(messages=True, guilds=True, members=True)
 lines = "--------------------------------------------"
 bot = commands.Bot(command_prefix='!',intents=intents)
-oaktreeNum = 637417903053864961
+YOURNAMEHERE = YOURUNIQUEIDHERE
 
 bar = "~~----------------------------------------~~"
 button = "**•**"
@@ -56,10 +56,10 @@ async def on_guild_join(guild):
 async def on_message(message):
   msg = message.content
   channel = message.channel
-  oaktree = await bot.fetch_user(oaktreeNum)
+  BOT_OWNER_NAME_HERE = await bot.fetch_user(BOT_OWNER_ID_HERE)
   if channel.id == 994356807101329538:
-    if not message.author.id == oaktreeNum:
-      await oaktree.send(msg)
+    if not message.author.id == BOT_OWNER_ID_HERE:
+      await BOT_OWNER_NAME_HERE.send(msg)
 
 @bot.command(name="botInfo")
 async def botInfo(ctx):
@@ -312,11 +312,7 @@ async def attack(ctx, *, userToAttack:discord.User):
           await ctx.send(f"Sorry, you don't have enough tokens to attack!\n\n*Attacks cost 5 tokens*")
       else:
         await ctx.send(f"{userToAttack.name}'s Minion has no health left; please attack a different Minion!")
-# @bot.command("heal", brief="Heal your Minion")
-# async def heal(ctx,num):
-#   healTheMinion(ctx.author,num)
-#   await ctx.send(f"Your minion has been healed by {int(num)*10} points!")
-
+        
 @bot.command("sell",brief="Sell an item in your inventory")
 async def sell(ctx, amount, *, itemName):
   message = sellTheItem(ctx.author,amount,itemName)
@@ -468,7 +464,7 @@ async def daily(ctx):
 async def message(ctx):
   conversation = Conversation(ctx.author.id, ctx.channel.id)
   user = ctx.message.author
-  oaktree = await bot.fetch_user(oaktreeNum)
+  BOT_OWNER_NAME_HERE = await bot.fetch_user(BOT_OWNER_ID_HERE)
   ended = False
   await user.send(welcome())
   while ended != True:
@@ -480,16 +476,16 @@ async def message(ctx):
         await user.send("Sure thing! What's the issue: ")
         issue = await bot.wait_for("message")
         await user.send(r"*Thank you for the complaint, we're sorry about any issues you may have encountered, and will try to fix things very soon!*")
-        await oaktree.send(complaintToOakTree(issue.content))
+        await BOT_OWNER_NAME_HERE.send(complaintToBOT_OWNER(issue.content))
         ended = True
       elif typeOf.content == "suggestion" or typeOf.content == "'suggestion'":
         await user.send("Sure thing! What's your suggestion: ")
         suggestion = await bot.wait_for("message")
         await user.send(r"*Thank you for the suggestion, we'll look it over and consider implementing it as soon as possible!*")
-        await oaktree.send(suggestionToOakTree(suggestion.content))
+        await BOT_OWNER_NAME_HERE.send(suggestionToBOT_OWNER(suggestion.content))
         ended = True
       else:
-        await oaktree.send(generalMessageToOakTree(typeOf.content))
+        await BOT_OWNER_NAME_HERE.send(generalMessageToBOT_OWNER(typeOf.content))
         ended = True
 
 

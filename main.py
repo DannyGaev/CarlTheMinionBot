@@ -540,4 +540,4 @@ async def quick(ctx):
       await ctx.send("Username: {username}, Id: {id}".format(username=member, id=member.id))
 
 
-bot.run('OTk0MDg5NDYzMDk5NjkxMDc5.GpFN_t.3xcAJBTr4n2ToBBuR20gWdbkDVGQTMNeSHUB4s')
+bot.run('YOURTOKENHERE')
